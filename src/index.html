@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive API documentation with real-time testing."
+    />
+    <meta name="theme-color" content="#0b1220" />
+
+    <title>API Docs</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Arix-inspired dark UI (original, not copied) -->
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading">
+      <div class="loading__card">
+        <div class="loader"></div>
+        <div class="loading__text">Loading…</div>
+      </div>
+    </div>
+
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand__logo" aria-hidden="true">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div class="brand__text">
+            <div id="titleApi" class="brand__title">API Docs</div>
+            <div id="descApi" class="brand__subtitle">
+              Interactive API documentation with real-time testing.
+            </div>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="nav__item nav__item--active" href="/docs">
+            <i class="fa-solid fa-book"></i>
+            <span>Documentation</span>
+          </a>
+          <a class="nav__item" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Search</span>
+          </a>
+          <a class="nav__item" href="#" onclick="document.getElementById('contactCustomerBtn')?.click();return false;">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </a>
+        </nav>
+
+        <div class="sidecard">
+          <div class="sidecard__title">Quick Links</div>
+          <a id="telegramLink" class="sidelink" target="_blank" rel="noreferrer">
+            <i class="fab fa-telegram-plane"></i>
+            <span>Telegram</span>
+          </a>
+          <a id="whatsappLink" class="sidelink" target="_blank" rel="noreferrer">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a id="youtubeLink" class="sidelink" target="_blank" rel="noreferrer">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+        </div>
+
+        <div class="sidecard">
+          <div class="sidecard__title">Tips</div>
+          <div class="muted">
+            Use the <span class="kbd">search</span> bar to quickly find endpoints.
+            Required query params are marked with <span class="req">*</span>.
+          </div>
+        </div>
+
+        <div id="footer" class="sidebar__footer">© API</div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <header class="topbar">
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search endpoints, categories, paths…"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+
+          <div class="topbar__actions">
+            <button
+              type="button"
+              class="btn btn--ghost"
+              id="collapseAllBtn"
+              title="Collapse all"
+            >
+              <i class="fa-solid fa-compress"></i>
+              <span class="hide-sm">Collapse</span>
+            </button>
+            <button
+              type="button"
+              class="btn btn--primary"
+              id="expandAllBtn"
+              title="Expand all"
+            >
+              <i class="fa-solid fa-expand"></i>
+              <span class="hide-sm">Expand</span>
+            </button>
+          </div>
+        </header>
+
+        <section id="content" class="content">
+          <div id="noResults" class="empty hidden">
+            <div class="empty__icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="empty__title">No results found</div>
+            <div class="empty__desc">Try different keywords or search by path.</div>
+          </div>
+
+          <div id="apiList" class="api-list">
+            <!-- Rendered by src/script.js -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <a
+      id="contactCustomerBtn"
+      href="#"
+      target="_blank"
+      rel="noreferrer"
+      class="fab-btn"
+      title="Contact"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
